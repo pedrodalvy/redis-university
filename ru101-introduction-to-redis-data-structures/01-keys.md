@@ -1,10 +1,9 @@
-## Working with Keys in Redis
+## Chapter: Working with Keys
 
-Redis is a powerful key-value store that excels at managing data using keys. This guide will walk you through various operations involving keys in Redis.
+Some operations related to keys in Redis.
 
 ### Creating Keys
-
-You can create keys and associate values with them using the `SET` command. Keys in Redis are case-sensitive.
+To create a key, you can use the `SET` command.
 
 ```bash
 # Create keys and associate values
@@ -15,8 +14,10 @@ SET registeredusers:1001:followers 10
 SET RegisteredUsers:1000:followers 2
 ```
 
+> Note: Keys in Redis are case-sensitive.
+
 ### Retrieving Values by Key
-You can retrieve values associated with keys using the `GET` command. Remember that keys are case-sensitive.
+To retrieve a value associated with a key, you can use the `GET` command.
 
 ```bash
 GET registeredusers:1000:followers
@@ -55,21 +56,21 @@ The `SET` command can be used with modifiers to create keys conditionally. The `
 
 ```bash
 # Create if key doesn't exist
-SET inventory:100-meters-womens-final 1000 NX   # Returns OK
+SET inventory:100-meters-womens-final 1000 NX
 
 # Attempt to create again (will return nil)
-SET inventory:100-meters-womens-final 2000 NX   # Returns (nil)
+SET inventory:100-meters-womens-final 2000 NX
 ```
 
 ### Updating Keys Conditionally
-The SET command can also be used to update keys conditionally. The XX option ensures the key is updated only if it already exists.
+The `SET` command can also be used to update keys conditionally. The `XX` option ensures the key is updated only if it already exists.
 
 ```bash
 # Update if key exists
-SET inventory:100-meters-womens-final 1000 XX   # Returns OK
+SET inventory:100-meters-womens-final 1000 XX
 
 # Attempt to update non-existent key (will return nil)
-SET inventory:200-meters-womens-final 1000 XX   # Returns (nil)
+SET inventory:200-meters-womens-final 1000 XX
 ```
 
 ### Working with Key Time-to-Live (TTL)
@@ -107,7 +108,7 @@ PTTL seat-hold
 
 ### Retaining a Key
 
-If you want to retain a key and prevent it from expiring, you can use the PERSIST command.
+If you want to retain a key and prevent it from expiring, you can use the `PERSIST` command.
 
 ```bash
 PERSIST seat-hold

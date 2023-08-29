@@ -1,4 +1,4 @@
-## Strings Explained
+## Chapter: Strings Explained
 
 Some operations related to strings in Redis.
 
